@@ -51,7 +51,15 @@ All main components are in `blog_project` folder:
 
 /posts/<int:post_id>
 
-/posts/<int:post_id>/<action>
+/posts/<int:post_id>/like
+
+/posts/<int:post_id>/unlike
+
+/posts/<int:post_id>/delete
+
+/posts/<int:post_id>/number_of_likes
+
+/posts/<int:post_id>/likes
 
 /account
 
@@ -162,13 +170,13 @@ $ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:pos
 To get list of users who like a post:
 
 ```
-$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/get_likes
+$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/likes
 ```
 
 To get the number of people who liked a post:
 
 ```
-$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/get_number_of_likes
+$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/number_of_likes
 ```
 
 To logout
