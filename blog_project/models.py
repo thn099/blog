@@ -25,12 +25,12 @@ class User(db.Model, UserMixin):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
     def like(self, post):
-        if not self.has_liked_post(post):
+        if not self.has_liked(post):
             like = PostLike(user_id=self.id, post_id=post.id)
             db.session.add(like)
 
     def unlike(self, post):
-        if self.has_liked_post(post):
+        if self.has_liked(post):
             PostLike.query.filter_by(user_id=self.id, post_id=post.id).delete()
 
     def has_liked(self, post):
