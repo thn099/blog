@@ -222,3 +222,28 @@ def action(post_id, action):
     else:
         return jsonify({'message': 'Action not supported'}), 400
 
+
+@app.route('/account/update', methods=['GET', 'PUT'])
+@login_required
+def update_profile():
+    phone_number = request.json.get('phone_number')
+    occupation = request.json.get('occupation')
+
+    if phone_number:
+        if current_user.type == 'facebook_user':
+            setattr(current_user, 'phone_number', phone_number)
+            db.session.commit()
+            return jsonify({'message': 'Phone number updated'}), 200
+        else:
+            return jsonify({'message': 'Can only update phone number of Facebook user'}), 400
+
+    if occupation:
+        if current_user.type == 'google_user':
+            setattr(current_user, 'occupation', occupation)
+            db.session.commit()
+            return jsonify({'message': 'Occupation updated'}), 200
+        else:
+            return jsonify(
+                {'message': 'Can only update occupation of Google user'}), 400
+
+    return jsonify({'message': 'Invalid argument'}), 400
