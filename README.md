@@ -14,9 +14,9 @@ Use `pip install` to get the following packages:
 
 `flask-login`
 
-To establish connecttion to MySQ, current database url on line 9 in `blog_project/__init__.py` is set to: `mysql+pymysql://root:root1234@localhost`.
+To establish connecttion to MySQL, current database url on line 9 in `blog_project/__init__.py` is set to: `mysql+pymysql://root:root1234@localhost`.
 
-Modify user (currently set to `root`) and password (currenttly set to `root1234`) according to your system.
+Modify `user` (currently set to `root`) and `password` (currenttly set to `root1234`) in the database url according to your system.
 
 Database name is currently set to `blog_database` on line 10 in `blog_project/__init__.py`
 
@@ -35,9 +35,13 @@ All main components are in `blog_project` folder:
 
 # Run
 
-`export FLASK_APP=run.py`
+```
+$ export FLASK_APP=run.py
+```
 
-`flask run`
+```
+$ flask run
+```
 
 By default, service will be running on `http://127.0.0.1:5000/`
 
@@ -45,7 +49,10 @@ By default, service will be running on `http://127.0.0.1:5000/`
 
 Use curl command to test endpoint:
 
-Ex: `curl -i -H "Content-Type: application/json" -X POST -d '{"email":"abc@gmail.com", "password":"1234", "username":"A"}' http://127.0.0.1:5000/signup/google`
+Ex: 
+```
+$ curl -i -H "Content-Type: application/json" -X POST -d '{"email":"abc@gmail.com", "password":"1234", "username":"A"}' http://127.0.0.1:5000/signup/google
+```
 
 To test endpoints that require user login, provide `--cookie "session=<encoded session>" ` option in your `curl` command
 
