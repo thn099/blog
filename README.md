@@ -33,6 +33,38 @@ All main components are in `blog_project` folder:
 
 `routes.py`: API endpoints
 
+/
+
+/home
+
+/login
+
+/logout
+
+/signup/facebook
+
+/signup/google
+
+/posts
+
+/posts/new
+
+/posts/<int:post_id>
+
+/posts/<int:post_id>/like
+
+/posts/<int:post_id>/unlike
+
+/posts/<int:post_id>/delete
+
+/posts/<int:post_id>/number_of_likes
+
+/posts/<int:post_id>/likes
+
+/account
+
+/account/update
+
 Note: I didn't have 2 endpoints `http://127.0.0.1:5000/login/facebook` (to login using Facebook) and `http://127.0.0.1:5000/login/google` (to login using Google) because those would involve client id and key access in order to make calls to Google and Facebook login APIs. For now, user can login using email and password through `http://127.0.0.1:5000/login`
 
 
@@ -138,13 +170,13 @@ $ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:pos
 To get list of users who like a post:
 
 ```
-$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/get_likes
+$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/likes
 ```
 
 To get the number of people who liked a post:
 
 ```
-$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/get_number_of_likes
+$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/number_of_likes
 ```
 
 To logout
