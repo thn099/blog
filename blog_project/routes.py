@@ -209,10 +209,10 @@ def action(post_id, action):
         db.session.delete(post)
         db.session.commit()
         return jsonify({'message': 'Post has been deleted'}), 200
-    if action == 'get_number_of_likes':
+    if action == 'number_of_likes':
         count = post.likes.count()
         return jsonify(post_id=post.id, number_of_likes=count), 200
-    if action == 'get_likes':  # get names of users who liked this post
+    if action == 'likes':  # get names of users who liked this post
         user_dict = {}
         for like in post.likes:
             user_id = like.user_id
