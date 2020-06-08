@@ -29,10 +29,31 @@ All main components are in `blog_project` folder
 
 `flask run`
 
-By default, service will be running on http://127.0.0.1:5000/
+By default, service will be running on `http://127.0.0.1:5000/`
 
 # Test
 
 Use curl command to test endpoint:
 
-Ex: `curl -i -H "Content-Type: application/json" -X POST -d '{"email":"abc@gmail.com", "password":"1234", "username":"A"}' http://127.0.0.1:5000/signup/google
+Ex: `curl -i -H "Content-Type: application/json" -X POST -d '{"email":"abc@gmail.com", "password":"1234", "username":"A"}' http://127.0.0.1:5000/signup/google`
+
+To test endpoints that require user login, provide `--cookie "session=<encoded session>" ` option in your `curl` command
+
+Ex:
+
+```
+$ curl -i -H "Content-Type: application/json" -X POST -d '{"email":"abc@gmail.com", "password":"1234"}' http://127.0.0.1:5000/login
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 24
+Vary: Cookie
+Set-Cookie: session=<encoded session>; HttpOnly; Path=/
+Server: Werkzeug/1.0.1 Python/3.6.0
+Date: Mon, 08 Jun 2020 12:29:47 GMT
+```
+
+```
+$ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/logout
+```
+
+Run `deactive` to exit virtualenv
