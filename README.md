@@ -1,8 +1,6 @@
 # Set up
 
-Run `cd` to `blog` folder
-
-Run `source env/bin/activate` to activate virtualenv
+At the main project folder, run `source env/bin/activate` to activate virtualenv.
 
 To establish connecttion to MySQ, current database url on line 9 `__init__.py` is set to: 'mysql+pymysql://root:root1234@localhost'.
 
@@ -14,7 +12,7 @@ Modify database name `blog_database` if there is existing duplicate.
 
 # Description
 
-All main components are in `blog_project` folder
+All main components are in `blog_project` folder:
 
 `__init__.py`: import project dependencies and set up database
 
