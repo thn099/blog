@@ -1,6 +1,18 @@
 # Set up
 
-At the main project folder, run `source env/bin/activate` to activate virtualenv.
+Use `pip install` to get the following packages:
+
+`flask`
+
+`sqlalchemy`
+
+`flask-alchemy`
+
+`flask-bcrypt`
+
+`pymysql`
+
+`flask-login`
 
 To establish connecttion to MySQ, current database url on line 9 `blog_project/__init__.py` is set to: 'mysql+pymysql://root:root1234@localhost'.
 
