@@ -14,11 +14,11 @@ Use `pip install` to get the following packages:
 
 `flask-login`
 
-To establish connecttion to MySQ, current database url on line 9 `blog_project/__init__.py` is set to: 'mysql+pymysql://root:root1234@localhost'.
+To establish connecttion to MySQ, current database url on line 9 in `blog_project/__init__.py` is set to: `mysql+pymysql://root:root1234@localhost`.
 
 Modify user (currently set to `root`) and password (currenttly set to `root1234`) according to your system.
 
-Database name is currently set to `blog_database` on line 10 `blog_project/__init__.py`
+Database name is currently set to `blog_database` on line 10 in `blog_project/__init__.py`
 
 
 
