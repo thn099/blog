@@ -65,5 +65,3 @@ Date: Mon, 08 Jun 2020 12:29:47 GMT
 ```
 $ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/logout
 ```
-
-Run `deactive` to exit virtualenv
