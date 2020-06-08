@@ -32,7 +32,7 @@ All main components are in `blog_project` folder:
 
 `routes.py`: API endpoints
 
-Note: I didn't have `login/facebook` and `login/google` (although I'm supposed to have) because those involve client id and key access in order to function. So no setting up for Google and Facebook login APIs.
+Note: I didn't have 2 endpoints `http://127.0.0.1:5000/login/facebook` and `http://127.0.0.1:5000/login/google` because those involve client id and key access in order to function. So no setting up for Google and Facebook login APIs in the project.
 
 
 # Run
