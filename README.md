@@ -1,25 +1,21 @@
-# Install Dependencies
+# Set up
 
-Use `pip install` to get the following packages:
+`cd` to `blog` folder
 
-`flask`
+`source env/bin/activate` to activate virtualenv
 
-`sqlalchemy`
+Have MySQL database running
 
-`flask-alchemy`
+To establish connecttion to MySQ, current database url on line 9 `__init__.py` is set to: 'mysql+pymysql://root:root1234@localhost'.
 
-`flask-bcrypt`
+Modify user (currently set to `root`) and password (currenttly set to `root1234`) according to your system
 
-`flask-login`
-
-Install python3
-
-Install mysql
-
-Database engine url: 'mysql+pymysql://root:root1234@localhost/blog_database'
+Modify database name `blog_database` if there is existing duplicate.
 
 
 # Description
+
+All main components are in `blog_project` folder
 
 `__init__.py`: import project dependencies and set up database
 
@@ -32,7 +28,11 @@ Database engine url: 'mysql+pymysql://root:root1234@localhost/blog_database'
 
 cd to flask_blog folder
 
-Run: flask run
+Run: 
+
+`export FLASK_APP=run.py`
+
+`flask run`
 
 
 # Test
