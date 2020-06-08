@@ -196,11 +196,11 @@ def action(post_id, action):
     if post is None:
         return jsonify({'message': 'Can\'t find this post'}), 404
     if action == 'like':
-        current_user.like_post(post)
+        current_user.like(post)
         db.session.commit()
         return jsonify({'message': 'Liked'}), 200
     if action == 'unlike':
-        current_user.unlike_post(post)
+        current_user.unlike(post)
         db.session.commit()
         return jsonify({'message': 'Unliked'}), 200
     if action == 'delete':

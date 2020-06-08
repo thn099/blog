@@ -29,21 +29,17 @@ class User(db.Model, UserMixin):
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-    def like_post(self, post):
+    def like(self, post):
         if not self.has_liked_post(post):
             like = PostLike(user_id=self.id, post_id=post.id)
             db.session.add(like)
 
-    def unlike_post(self, post):
+    def unlike(self, post):
         if self.has_liked_post(post):
             PostLike.query.filter_by(
                 user_id=self.id,
-                post_id=post.id).delete()
-
-    def has_liked_post(self, post):
-        return PostLike.query.filter(
-            PostLike.user_id == self.id,
-            PostLike.post_id == post.id).count() > 0
+                post_id=post.id)\
+                .delete()
 
 
 class GoogleUser(User):
