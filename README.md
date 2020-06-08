@@ -2,7 +2,7 @@
 
 At the main project folder, run `source env/bin/activate` to activate virtualenv.
 
-To establish connecttion to MySQ, current database url on line 9 `__init__.py` is set to: 'mysql+pymysql://root:root1234@localhost'.
+To establish connecttion to MySQ, current database url on line 9 `blog_project/__init__.py` is set to: 'mysql+pymysql://root:root1234@localhost'.
 
 Modify user (currently set to `root`) and password (currenttly set to `root1234`) according to your system
 
