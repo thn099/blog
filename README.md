@@ -18,7 +18,7 @@ To establish connecttion to MySQL, current database url on line 9 in `blog_proje
 
 Modify `user` (currently set to `root`) and `password` (currenttly set to `root1234`) in the database url according to your system.
 
-Database name is currently set to `blog_database` on line 10 in `blog_project/__init__.py`.
+Database name is currently set to `my_database` on line 10 in `blog_project/__init__.py`.
 
 Assume system is running MySQL.
 
