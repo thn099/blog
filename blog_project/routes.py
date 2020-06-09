@@ -40,6 +40,19 @@ def post(post_id):
                    content=post.content)
 
 
+@app.route("/posts/<int:post_id>", methods=['DELETE'])
+def delete_post(post_id):
+    """ Return content and other info of post_id """
+    post = Post.query.filter_by(id=post_id).first()
+    if post.author != current_user:
+        return jsonify({'message': 'You are not authorized to delete this post'}), 403
+    if post is None:
+        return jsonify({'message': 'Post not found'}), 404
+    db.session.delete(post)
+    db.session.commit()
+    return jsonify({'message': 'Post has been deleted'}), 200
+
+
 @app.route("/signup/google",  methods=['GET', 'POST'])
 def sign_up_with_google():
     """ Allow user to create an account using Google account.
@@ -189,7 +202,7 @@ def new_post():
 @app.route('/posts/<int:post_id>/<action>')
 @login_required
 def action(post_id, action):
-    """ Allow user to like/unlike/delete/get some statistics of a post
+    """ Allow user to like/unlike/get some statistics of a post
         Only allow user to delete their own posts
     """
     post = Post.query.filter_by(id=post_id).first()
@@ -203,12 +216,6 @@ def action(post_id, action):
         current_user.unlike(post)
         db.session.commit()
         return jsonify({'message': 'Unliked'}), 200
-    if action == 'delete':
-        if post.author != current_user:
-            return jsonify({'message': 'You are not authorized to delete this post'}), 403
-        db.session.delete(post)
-        db.session.commit()
-        return jsonify({'message': 'Post has been deleted'}), 200
     if action == 'number_of_likes':
         count = post.likes.count()
         return jsonify(post_id=post.id, number_of_likes=count), 200
@@ -223,9 +230,10 @@ def action(post_id, action):
         return jsonify({'message': 'Action not supported'}), 400
 
 
-@app.route('/account/update', methods=['GET', 'PUT'])
+@app.route('/account', methods=['GET', 'PUT'])
 @login_required
 def update_profile():
+    """ Update phone number for Facebook user or occupation for Google user """
     phone_number = request.json.get('phone_number')
     occupation = request.json.get('occupation')
 

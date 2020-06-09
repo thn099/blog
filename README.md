@@ -55,15 +55,11 @@ All main components are in `blog_project` folder:
 
 /posts/<int:post_id>/unlike
 
-/posts/<int:post_id>/delete
-
 /posts/<int:post_id>/number_of_likes
 
 /posts/<int:post_id>/likes
 
 /account
-
-/account/update
 
 Note: I didn't have 2 endpoints `http://127.0.0.1:5000/login/facebook` (to login using Facebook) and `http://127.0.0.1:5000/login/google` (to login using Google) because those would involve client id and key access in order to make calls to Google and Facebook login APIs. For now, user can login using email and password through `http://127.0.0.1:5000/login`
 
@@ -128,13 +124,13 @@ $ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/account
 To update phone number (for Facebook user):
 
 ```
-$ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X PUT -d '{"phone_number":"111"}' http://127.0.0.1:5000/account/update
+$ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X PUT -d '{"phone_number":"111"}' http://127.0.0.1:5000/account
 ```
 
 To update occupation number (for Google user):
 
 ```
-$ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X PUT -d '{"occupation":"student"}' http://127.0.0.1:5000/account/update
+$ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X PUT -d '{"occupation":"student"}' http://127.0.0.1:5000/account
 ```
 
 To get all posts (home page):
@@ -159,6 +155,12 @@ To create a new post:
 
 ```
 $ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X POST -d '{"title":"a title", "content":"some content"}' http://127.0.0.1:5000/posts/new
+```
+
+To delete a new post:
+
+```
+$ curl --cookie "session=<encoded session>" -X DELETE http://127.0.0.1:5000/posts/<int:post_id>
 ```
 
 To like a post (similar for unlike):
