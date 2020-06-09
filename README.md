@@ -47,8 +47,6 @@ All main components are in `blog_project` folder:
 
 /posts
 
-/posts/new
-
 /posts/<int:post_id>
 
 /posts/<int:post_id>/like
@@ -154,10 +152,10 @@ $ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:pos
 To create a new post:
 
 ```
-$ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X POST -d '{"title":"a title", "content":"some content"}' http://127.0.0.1:5000/posts/new
+$ curl --cookie "session=<encoded session>" -i -H "Content-Type: application/json" -X POST -d '{"title":"a title", "content":"some content"}' http://127.0.0.1:5000/posts
 ```
 
-To delete a new post:
+To delete a post:
 
 ```
 $ curl --cookie "session=<encoded session>" -X DELETE http://127.0.0.1:5000/posts/<int:post_id>

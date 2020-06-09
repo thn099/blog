@@ -184,7 +184,7 @@ def account():
                    account_type=current_user.type)
 
 
-@app.route("/posts/new", methods=['GET', 'POST'])
+@app.route("/posts", methods=['POST'])
 @login_required
 def new_post():
     """ Allow user to create new post with title and content """
@@ -230,7 +230,7 @@ def action(post_id, action):
         return jsonify({'message': 'Action not supported'}), 400
 
 
-@app.route('/account', methods=['GET', 'PUT'])
+@app.route('/account', methods=['PUT'])
 @login_required
 def update_profile():
     """ Update phone number for Facebook user or occupation for Google user """
