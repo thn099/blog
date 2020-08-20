@@ -1,19 +1,6 @@
-# Set up
-
-Use `pip install` to get required packages:
-
-`pip install flask sqlalchemy flask-alchemy flask-bcrypt pymysql flask-login`
-
-To establish connecttion to MySQL, current database url on line 9 in `blog_project/__init__.py` is set to: `mysql+pymysql://root:root1234@localhost`.
-
-Modify `user` (currently set to `root`) and `password` (currenttly set to `root1234`) in the database url according to your system.
-
-Database name is currently set to `my_database` on line 10 in `blog_project/__init__.py`.
-
-Assume system is running MySQL.
-
-
 # Description
+
+Back-end of a multi-user blogging application. User can create account, sign in, create posts, like other's posts. There are three ways to sign in: sign in with a user name and password, sign in with Google account and sign in with Facebook account. 
 
 All main components are in `blog_project` folder:
 
@@ -48,6 +35,23 @@ All main components are in `blog_project` folder:
 /posts/<int:post_id>/likes
 
 /account
+
+
+
+# Set up
+
+Use `pip install` to get required packages:
+
+`pip install flask sqlalchemy flask-alchemy flask-bcrypt pymysql flask-login`
+
+To establish connection to MySQL, current database url on line 9 in `blog_project/__init__.py` is set to: `mysql+pymysql://root:root1234@localhost`.
+
+Modify `user` (currently set to `root`) and `password` (currenttly set to `root1234`) in the database url according to your system.
+
+Database name is currently set to `my_database` on line 10 in `blog_project/__init__.py`.
+
+Assume system is running MySQL.
+
 
 
 # Run
