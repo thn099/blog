@@ -56,9 +56,6 @@ def delete_post(post_id):
 @app.route("/signup/google",  methods=['GET', 'POST'])
 def sign_up_with_google():
     """ Allow user to create an account using Google account.
-        This method is implemented under some assumptions:
-            - User has been verified by making calls to Google API and return their email back
-            - User also need to give a username
     """
     if current_user.is_authenticated:
         return jsonify({'message': 'Must log out before creating a new account'}), 403
@@ -67,7 +64,7 @@ def sign_up_with_google():
     email = request.json.get('email')
     password = request.json.get('password')
 
-    # Assume Google login API already handled email validation
+    # Assume Google email is validated
 
     if username is None or email is None or password is None:
         return jsonify({'message': 'Missing argument'}), 400
@@ -101,9 +98,6 @@ def sign_up_with_google():
 @app.route("/signup/facebook", methods=['GET', 'POST'])
 def sign_up_with_facebook():
     """ Allow user to create an account using Facebook account.
-        This method is implemented under some assumptions:
-            - User has been verified by making calls to Facebook API and return their email back
-            - User also need to give a username
     """
     if current_user.is_authenticated:
         return jsonify({'message': 'Must log out before creating a new account'}), 400
@@ -112,7 +106,7 @@ def sign_up_with_facebook():
     email = request.json.get('email')
     password = request.json.get('password')
 
-    # Assume Facebook login API already handled email validation
+    # Assume Facebook email is validated
 
     if username is None or email is None or password is None:
         return jsonify({'message': 'Missing argument'}), 400
