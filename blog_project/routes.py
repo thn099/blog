@@ -42,7 +42,7 @@ def post(post_id):
 
 @app.route("/posts/<int:post_id>", methods=['DELETE'])
 def delete_post(post_id):
-    """ Return content and other info of post_id """
+    """ Allow user to delete post """
     post = Post.query.filter_by(id=post_id).first()
     if post.author != current_user:
         return jsonify({'message': 'You are not authorized to delete this post'}), 403
@@ -193,23 +193,29 @@ def new_post():
     return jsonify({'message': 'New post created'}), 201
 
 
+@app.route('/posts/<int:post_id>/like', methods=['GET', 'DELETE'])
+@login_required
+def like_or_unlike(post_id, action):
+    """ Allow user to like/unlike a post"""
+    post = Post.query.filter_by(id=post_id).first()
+    if request.method == 'POST':
+        current_user.like(post)
+        db.session.commit()
+        return jsonify({'message': 'Liked'}), 200
+    else:
+        current_user.unlike(post)
+        db.session.commit()
+        return jsonify({'message': 'Unliked'}), 200
+
+
 @app.route('/posts/<int:post_id>/<action>')
 @login_required
 def action(post_id, action):
-    """ Allow user to like/unlike/get some statistics of a post
-        Only allow user to delete their own posts
+    """ Allow user to get some statistics of a post
     """
     post = Post.query.filter_by(id=post_id).first()
     if post is None:
         return jsonify({'message': 'Can\'t find this post'}), 404
-    if action == 'like':
-        current_user.like(post)
-        db.session.commit()
-        return jsonify({'message': 'Liked'}), 200
-    if action == 'unlike':
-        current_user.unlike(post)
-        db.session.commit()
-        return jsonify({'message': 'Unliked'}), 200
     if action == 'number_of_likes':
         count = post.likes.count()
         return jsonify(post_id=post.id, number_of_likes=count), 200

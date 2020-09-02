@@ -28,8 +28,6 @@ All main components are in `blog_project` folder:
 
 /posts/<int:post_id>/like
 
-/posts/<int:post_id>/unlike
-
 /posts/<int:post_id>/number_of_likes
 
 /posts/<int:post_id>/likes
@@ -153,7 +151,7 @@ To delete a post:
 $ curl --cookie "session=<encoded session>" -X DELETE http://127.0.0.1:5000/posts/<int:post_id>
 ```
 
-To like a post (similar for unlike):
+To like a post:
 
 ```
 $ curl --cookie "session=<encoded session>" http://127.0.0.1:5000/posts/<int:post_id>/like
