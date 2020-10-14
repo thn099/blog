@@ -1,6 +1,6 @@
 # Description
 
-This project is a back-end component of a blogging application, which consists of data storage in MySQL and API to expose user data. Users can create account, sign in, create posts, like other's posts. There are three ways to sign in: sign in with a user name and password, sign in with Google account and sign in with Facebook account. 
+This project is my first attempt to learn Flask. I built this as a back-end component of a blogging application, which consists of data storage in MySQL and API to expose user data. Users can create account, sign in, create posts, like other's posts. There are three ways to sign in: sign in with a user name and password, sign in with Google account and sign in with Facebook account. 
 
 All main components are in `blog_project` folder:
 
